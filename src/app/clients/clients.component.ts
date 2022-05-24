@@ -49,16 +49,16 @@ export class ClientsComponent implements OnInit {
 
   public filterUsers() {
     if (this.filter === '') {
-      this.filteredUsers = this.users;
+      this.filteredUsers = this.allUsers;
       return;
     }
     if (isNaN(parseInt(this.filter))) {
-      this.filteredUsers = this.users.filter(user => user.name.toLowerCase().includes(this.filter.toLowerCase()))
+      this.filteredUsers = this.allUsers.filter(user => user.name.toLowerCase().includes(this.filter.toLowerCase()))
       return;
     }
 
-    const filterCPF = this.users.filter(user => user.cpf.includes(this.filter))
-    const filterBirth = this.users.filter(user => user.birth.includes(this.filter))
+    const filterCPF = this.allUsers.filter(user => user.cpf.includes(this.filter))
+    const filterBirth = this.allUsers.filter(user => user.birth.includes(this.filter))
     this.filteredUsers = [...filterCPF, ...filterBirth]
   }
 
