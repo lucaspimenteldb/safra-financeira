@@ -1,0 +1,78 @@
+<header class="header">
+  <h1 class="header__title" routerLink="">
+    {{title}}
+  </h1>
+</header>
+
+<section class="clients">
+  <h2 class="clients__title">
+    CLIENTES
+  </h2>
+
+  <div class="clients__input">
+    <label for="filter">
+      Filtro
+    </label>
+    <input 
+      type="text" 
+      id="filter" 
+      [(ngModel)]="filter" 
+      (change)="updateFilterModel($event)" 
+      [name]="filter"
+      (keydown.enter)="filterUsers()"
+    >
+    <button class="clients__filter-button" (click)="filterUsers()">
+      <img src="assets/magnify.png">
+    </button>
+  </div>
+
+  <table class="clients__table" CELLSPACING=0>
+    <thead>
+      <tr>
+        <th *ngFor="let th of tableHead">
+          {{th}}
+        </th>
+      </tr>
+    </thead>
+    <tbody *ngIf="users.length">
+      <tr 
+        *ngFor="let user of filteredUsers"
+        class="clients__data-row"
+      >
+        <td>
+          {{user.name}}
+        </td>
+        <td>
+          {{user.cpf}}
+        </td>
+        <td>
+          {{user.birth}}
+        </td>
+        <td>
+          {{user.signUpDate}}
+        </td>
+        <td>
+          R${{user.wage}}
+        </td>
+        <td>
+          <button (click)="deleteUser(user.id)">
+            <img src="assets/delete.png" >
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ul class="clients__pagination">
+    <li *ngFor="let page of pages">
+      <a 
+        routerLink="/clients/{{page}}" 
+        (click)="paginateUsers(page)"
+        routerLinkActive="clients__active-page"
+      >
+        {{page}}
+      </a>
+    </li>
+  </ul>
+
+</section>

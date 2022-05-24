@@ -1,0 +1,41 @@
+<header class="header">
+  <h1 class="header__title">
+    {{title}} 
+  </h1>
+</header>
+
+<section class="sign-up">
+  <h2 class="sign-up__title">
+    CADASTRO DE CLIENTES
+  </h2>
+
+  <form>
+    <div 
+      *ngFor="let input of signUpInputs" 
+      [ngClass]="['sign-up__input', input.customClass]"
+    >
+      <label for="name">
+        {{input.label}}
+      </label>
+      <input 
+        type="text"
+        [id]="input.id" 
+        [placeholder]="input.placeholder"
+        [mask]="input.mask ? input.mask : ''"
+        [(ngModel)]="input.model"
+        (change)="updateModel($event, input.id)"
+        [name]="input.id"
+      >
+
+      <img *ngIf="input.icon" [src]="input.icon" alt="Calendário">
+    </div>
+  </form>
+
+  <p class="sign-up__message">
+    *Campos com preenchimento obrigatório
+  </p>
+
+  <button type="submit" class="sign-up__button" (click)="checkAllFields()">
+    SALVAR
+  </button>
+</section>

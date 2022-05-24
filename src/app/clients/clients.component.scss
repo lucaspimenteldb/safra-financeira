@@ -1,0 +1,121 @@
+.clients {
+  padding: 0 26px;
+  
+  &__title {
+    margin: 26px 0;
+    color: #0B4051;
+    font-size: 22px;
+    font-weight: 900;
+  }
+
+  &__input {
+    margin: 0 34px 36px 0;
+    flex: 1;
+    font-weight: 700;
+    font-size: 14px;
+
+    label {
+      margin-bottom: 10px;
+      display: block;
+      color: #00586F;
+    }
+
+    input {
+      padding: 19.5px 16px;
+      width: 313px;
+      height: 60px;
+      background: #FFFFFF;
+      border: 1px solid #D8D8D8;
+      border-radius: 4px;
+      outline: none;
+    }
+  }
+
+  &__filter-button {
+    margin-left: 9px;
+    display: inline-flex;
+    vertical-align: bottom;
+    width: 60px;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    background-color: #73D852;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__table {
+    width: 100%;
+    border-spacing: 0 9px;
+
+    th {
+      padding-left: 21px;
+      font-weight: 700;
+      font-size: 12px;
+      color: #0EA0C0;
+      text-align: left;
+    }
+  }
+  &__data-row {
+    margin: 6px 0 3px;
+    height: 45px;
+    background-color: rgba(229, 229, 229, .4);
+
+    td {
+      padding-left: 21px;
+      font-weight: 700;
+
+      &:first-child {
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+      }
+      &:last-child {
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 37px;
+        height: 28px;
+        background-color: #0EA0C0;
+        border: none;
+        outline: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__pagination {
+    margin-top: 34px;
+    display: flex;
+    justify-content: center;
+
+    li {
+      margin-left: 8px;
+      list-style: none;
+
+      a {
+        font-weight: 500;
+        font-size: 12px;
+        text-decoration: none;
+        color: #0EA0C0;
+
+        &.clients__active-page {
+          font-weight: 700;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
