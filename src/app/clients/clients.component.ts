@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
 
 @Component({
@@ -9,10 +9,7 @@ import axios from 'axios';
 })
 export class ClientsComponent implements OnInit {
 
-  constructor(route: ActivatedRoute) {
-    route.params.subscribe((params) => {
-      this.page = params["page"];
-    });
+  constructor(private router:Router) {
   }
 
   BASE_URL:string = "http://localhost:3000/"
@@ -70,11 +67,14 @@ export class ClientsComponent implements OnInit {
       this.getUsers()
     })
   }
+  public editUser(id:string) {
+    this.router.navigateByUrl('/edit-client/' + id);
+  }
 
   private getUsers() {
     axios.get(this.BASE_URL + 'users').then(({data}) => {
       const start = (this.page - 1) * 4;
-      const end = (this.page * 3) + 1;
+      const end = (this.page * 4);
       const pages = []
       for (let index = 1; index <= Math.ceil(data.length /4); index += 1) {
         pages.push(index)
@@ -87,8 +87,9 @@ export class ClientsComponent implements OnInit {
   }
 
   public paginateUsers(page:number) {
+    this.page = page;
     const start = (page - 1) * 4;
-    const end = (page * 3) + 1;
+    const end = (page * 4);
     this.filteredUsers = this.allUsers.slice(start, end);
   }
 

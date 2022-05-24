@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { ClientsComponent } from './clients/clients.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { NgxMaskModule, IConfig  } from 'ngx-mask';
+import { EditClientComponent } from './edit-client/edit-client.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientsComponent,
-    SignUpComponent
+    SignUpComponent,
+    EditClientComponent
   ],
   imports: [
     BrowserModule,

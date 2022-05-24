@@ -58,20 +58,22 @@
           <button (click)="deleteUser(user.id)">
             <img src="assets/delete.png" >
           </button>
+          <button (click)="editUser(user.id)">
+            <img src="assets/edit.png" >
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
 
   <ul class="clients__pagination">
-    <li *ngFor="let page of pages">
-      <a 
-        routerLink="/clients/{{page}}" 
-        (click)="paginateUsers(page)"
-        routerLinkActive="clients__active-page"
+    <li *ngFor="let currentPage of pages">
+      <button 
+        (click)="paginateUsers(currentPage)"
+        [ngClass]="{'clients__active-page': currentPage == page}"
       >
-        {{page}}
-      </a>
+        {{currentPage}}
+    </button>
     </li>
   </ul>
 

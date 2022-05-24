@@ -1,0 +1,89 @@
+<header class="header">
+  <h1 class="header__title">
+    {{title}} 
+  </h1>
+</header>
+
+<section class="sign-up">
+  <h2 class="sign-up__title">
+    EDITAR CLIENTE
+  </h2>
+
+  <form #form>
+    <div class="sign-up__input sign-up__input--name">
+      <label for="name">
+        Nome*:
+      </label>
+      <input 
+        type="text"
+        id="name" 
+        placeholder="Insira o nome"
+        [(ngModel)]="user.name"
+        (change)="updateModel($event, 'name')"
+        name="name"
+      >
+    </div>
+    <div class="sign-up__input sign-up__input--cpf">
+      <label for="cpf">
+        CPF*:
+      </label>
+      <input 
+        type="text"
+        id="cpf" 
+        placeholder="Insira o nome"
+        [mask]="'000.000.000-00'"
+        [(ngModel)]="user.cpf"
+        name="cpf"
+        readonly
+      >
+    </div>
+    <div class="sign-up__input sign-up__input--name">
+      <label for="birth">
+        Data de nascimeto*:
+      </label>
+      <input 
+        type="text"
+        id="birth" 
+        placeholder="Insira o nome"
+        [mask]="'00/00/0000'"
+        [(ngModel)]="user.birth"
+        (change)="updateModel($event, 'birth')"
+        name="birth"
+      >
+    </div>
+    <div class="sign-up__input sign-up__input--name">
+      <label for="wage">
+        Renda Mensal*:
+      </label>
+      <input 
+        type="text"
+        id="wage" 
+        placeholder="Insira o nome"
+        [mask]="'00.000'"
+        [(ngModel)]="user.wage"
+        (change)="updateModel($event, 'wage')"
+        name="wage"
+      >
+    </div>
+    <div class="sign-up__input sign-up__input--email">
+      <label for="email">
+        E-mail*:
+      </label>
+      <input 
+        type="text"
+        id="email" 
+        placeholder="Informe o e-mail"
+        [(ngModel)]="user.email"
+        (change)="updateModel($event, 'email')"
+        name="email"
+      >
+    </div>
+  </form>
+  <p class="sign-up__message">
+    *Campos com preenchimento obrigatório 
+  </p>
+
+  <button type="submit" class="sign-up__button" (click)="checkAllFields()">
+    SALVAR
+  </button>
+</section>

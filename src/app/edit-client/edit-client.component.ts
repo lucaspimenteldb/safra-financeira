@@ -1,32 +1,44 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
 
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  selector: 'app-edit-client',
+  templateUrl: './edit-client.component.html',
+  styleUrls: ['./edit-client.component.scss']
 })
+export class EditClientComponent implements OnInit {
 
-export class SignUpComponent implements OnInit {
+  constructor(
+    route: ActivatedRoute, 
+    private router:Router, 
+    ) {
+    route.params.subscribe((params) => {
+      axios.get(this.BASE_URL + `users/${params["id"]}`).then(({data}) => {
+        this.user = data
+      });
+    });
+  }
 
-  constructor(private router:Router) { }
-
-  ngOnInit(): void {
+  ngOnInit(): void { 
   }
 
   BASE_URL:string = "http://localhost:3000/"
-
+  
   title:string = 'Safra Financeira';
-  name:string = '';
-  cpf:string = '';
-  birth:string = '';
-  wage:string = '';
-  email:string = '';
+  user = {
+    name: '',
+    cpf: '',
+    birth: '',
+    wage: '',
+    email: '',
+    id: '',
+    signUpDate: ''
+  }
   today = new Date(Date.now());
 
   public checkAllFields() {
-    const fields:string[] = [this.name, this.cpf, this.birth, this.wage, this.email]
+    const fields:string[] = [this.user.name, this.user.cpf, this.user.birth, this.user.wage, this.user.email]
     let isFormComplete:boolean = true;
     
     fields.map(field => {
@@ -37,19 +49,19 @@ export class SignUpComponent implements OnInit {
         return
       }
     })
-    
-    if (!this.checkSurname(this.name)) return
-    if (!this.checkCPF(this.cpf)) return
-    if (!this.isEighteen(this.birth)) return
+
+    if (!this.checkCPF(this.user.cpf)) return
+    if (!this.isEighteen(this.user.birth)) return
 
     if (isFormComplete) {
-      axios.post(this.BASE_URL + 'users', {
-        name: this.name,
-        cpf: this.cpf,
-        birth: this.birth,
-        wage: this.wage,
-        email: this.email,
-        signUpDate: this.today.toLocaleString().split(' ')[0] 
+      axios.put(this.BASE_URL + `users/${this.user.id}`, {
+        name: this.user.name,
+        cpf: this.user.cpf,
+        birth: this.user.birth,
+        wage: this.user.wage,
+        id: this.user.id,
+        email: this.user.email,
+        signUpDate: this.user.signUpDate
       }).then(() => {
         this.router.navigateByUrl('/clients');
       })
@@ -58,10 +70,6 @@ export class SignUpComponent implements OnInit {
 
   private checkCPF(cpf:string) {
     return cpf.length === 14 ? true : false
-  }
-
-  private checkSurname(name:string) {
-    return name.split(' ').length > 1
   }
 
   private isEighteen(birth:string) {
@@ -96,19 +104,16 @@ export class SignUpComponent implements OnInit {
   public updateModel($event:any, id:string) {
     switch (id) {
       case 'name':
-        this.name = $event.target.value;
-        break;
-      case 'cpf':
-        this.cpf = $event.target.value;
+        this.user.name = $event.target.value;
         break;
       case 'birth':
-        this.birth = $event.target.value;
+        this.user.birth = $event.target.value;
         break;
       case 'wage':
-        this.wage = $event.target.value;
+        this.user.wage = $event.target.value;
         break;
       case 'email':
-        this.email = $event.target.value;
+        this.user.email = $event.target.value;
     }
   }
 
@@ -118,7 +123,7 @@ export class SignUpComponent implements OnInit {
       placeholder: 'Informe o Nome',
       id: 'name',
       customClass: 'sign-up__input--name',
-      model: this.name
+      model: this.user.name
     },
     {
       label: 'CPF*:',
@@ -126,7 +131,8 @@ export class SignUpComponent implements OnInit {
       id: 'cpf',
       customClass: 'sign-up__input--cpf',
       mask: '000.000.000-00',
-      model: this.cpf
+      model: this.user.cpf,
+      readonly: true
     },
     {
       label: 'Data de nascimento*:',
@@ -136,7 +142,7 @@ export class SignUpComponent implements OnInit {
       icon: '/assets/calendar.png',
       type: 'date',
       mask: '00/00/0000',
-      model: this.birth
+      model: this.user.birth
     },
     {
       label: 'Renda Mensal*:',
@@ -144,14 +150,14 @@ export class SignUpComponent implements OnInit {
       id: 'wage',
       customClass: 'sign-up__input--wage',
       mask: '00.000',
-      model: this.wage
+      model: this.user.wage
     },
     {
       label: 'E-mail*:',
       placeholder: 'Informe o e-mail',
       id: 'email',
       customClass: 'sign-up__input--email',
-      model: this.email
+      model: this.user.email
     },
   ]
 }

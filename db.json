@@ -1,26 +1,29 @@
 {
   "users": [
     {
-      "name": "Lucas Pimentel",
+      "name": "Lucas Pimentelasd",
       "cpf": "801.283.901-28",
-      "birth": "11/10/2922",
-      "wage": "10.000",
-      "signUpDate": "24/05/2022",
-      "id": 1
+      "birth": "11/10/1990",
+      "wage": "20.001",
+      "id": 1,
+      "email": "lucas@gmail.com",
+      "signUpDate": "24/05/2022"
     },
     {
-      "name": "asdfsa",
+      "name": "Mario",
       "cpf": "121.312.312-31",
       "birth": "11/02/1997",
       "wage": "12.312",
-      "signUpDate": "24/05/2022",
-      "id": 2
+      "id": 2,
+      "email": "lucas@gmail.com",
+      "signUpDate": "24/05/2022"
     },
     {
       "name": "asdf",
       "cpf": "213.412.341-23",
       "birth": "20/05/2002",
       "wage": "12.312",
+      "email": "lucas@gmail.com",
       "signUpDate": "24/05/2022",
       "id": 3
     },
@@ -29,24 +32,54 @@
       "cpf": "903.893.759-82",
       "birth": "11/02/1997",
       "wage": "19.238",
+      "email": "lucas@gmail.com",
       "signUpDate": "24/05/2022",
       "id": 11
-    },
-    {
-      "name": "Maria",
-      "cpf": "981.274.891-27",
-      "birth": "11/02/1995",
-      "wage": "12.312",
-      "signUpDate": "24/05/2022",
-      "id": 12
     },
     {
       "name": "Angelo",
       "cpf": "192.981.724-98",
       "birth": "12/12/2000",
       "wage": "12.312",
+      "email": "lucas@gmail.com",
       "signUpDate": "24/05/2022",
       "id": 13
+    },
+    {
+      "name": "Marianazinha",
+      "cpf": "901.283.901-28",
+      "birth": "11/02/1997",
+      "wage": "10.100",
+      "email": "mari@gmail.com",
+      "signUpDate": "24/05/2022",
+      "id": 14
+    },
+    {
+      "name": "asdfasdfsa asd",
+      "cpf": "214.123.512-35",
+      "birth": "12/03/1990",
+      "wage": "23.757",
+      "email": "lucas dklfjalksdj",
+      "signUpDate": "24/05/2022",
+      "id": 15
+    },
+    {
+      "name": "lucas pim",
+      "cpf": "111.111.111-11",
+      "birth": "11/11/1990",
+      "wage": "12.213",
+      "email": "lucas@gmail.com",
+      "signUpDate": "24/05/2022",
+      "id": 16
+    },
+    {
+      "name": "LUcas piment",
+      "cpf": "092.834.903-84",
+      "birth": "12/10/1990",
+      "wage": "19.829",
+      "email": "lkucaslkdjslfk",
+      "signUpDate": "24/05/2022",
+      "id": 17
     }
   ]
 }
