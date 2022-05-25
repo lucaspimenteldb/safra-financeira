@@ -50,8 +50,9 @@ export class EditClientComponent implements OnInit {
       }
     })
 
-    if (!this.checkCPF(this.user.cpf)) return
+    if (!this.isDateValid(this.user.birth)) return
     if (!this.isEighteen(this.user.birth)) return
+    if (!this.checkSurname(this.user.name)) return
 
     if (isFormComplete) {
       axios.put(this.BASE_URL + `users/${this.user.id}`, {
@@ -68,8 +69,19 @@ export class EditClientComponent implements OnInit {
     }
   }
 
-  private checkCPF(cpf:string) {
-    return cpf.length === 14 ? true : false
+  private isDateValid(birth:string) {
+    const birthMonth = birth.split('/')[1]
+    const birthDay = birth.split('/')[0]
+
+    if (parseInt(birthMonth) > 12 || parseInt(birthDay) > 31) {
+      return false
+    }
+
+    return true
+  }
+
+  private checkSurname(name:string) {
+    return name.split(' ').length > 1
   }
 
   private isEighteen(birth:string) {

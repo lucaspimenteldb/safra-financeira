@@ -10,40 +10,31 @@
       "signUpDate": "24/05/2022"
     },
     {
-      "name": "Mario",
-      "cpf": "121.312.312-31",
-      "birth": "11/02/1997",
+      "name": "asdfa sadfas",
+      "cpf": "213.412.341-23",
+      "birth": "20/05/2002",
       "wage": "12.312",
-      "id": 2,
+      "id": 3,
       "email": "lucas@gmail.com",
       "signUpDate": "24/05/2022"
     },
     {
-      "name": "asdf",
-      "cpf": "213.412.341-23",
-      "birth": "20/05/2002",
-      "wage": "12.312",
-      "email": "lucas@gmail.com",
-      "signUpDate": "24/05/2022",
-      "id": 3
-    },
-    {
-      "name": "Lucas",
+      "name": "Lucas Mario",
       "cpf": "903.893.759-82",
       "birth": "11/02/1997",
       "wage": "19.238",
+      "id": 11,
       "email": "lucas@gmail.com",
-      "signUpDate": "24/05/2022",
-      "id": 11
+      "signUpDate": "24/05/2022"
     },
     {
-      "name": "Angelo",
+      "name": "Angelo Marinho",
       "cpf": "192.981.724-98",
       "birth": "12/12/2000",
       "wage": "12.312",
+      "id": 13,
       "email": "lucas@gmail.com",
-      "signUpDate": "24/05/2022",
-      "id": 13
+      "signUpDate": "24/05/2022"
     },
     {
       "name": "Marianazinha",
@@ -89,6 +80,15 @@
       "id": 18,
       "email": "ldel@gmail.com",
       "signUpDate": "25/05/2022"
+    },
+    {
+      "name": "Joao Mario",
+      "cpf": "127.498.172-49",
+      "birth": "31/11/2000",
+      "wage": "10.000",
+      "email": "joma@gmail.com",
+      "signUpDate": "25/05/2022",
+      "id": 19
     }
   ]
 }
