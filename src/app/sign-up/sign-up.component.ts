@@ -18,15 +18,17 @@ export class SignUpComponent implements OnInit {
   BASE_URL:string = "http://localhost:3000/"
 
   title:string = 'Safra Financeira';
-  name:string = '';
-  cpf:string = '';
-  birth:string = '';
-  wage:string = '';
-  email:string = '';
+  user = {
+    name: '',
+    cpf: '',
+    birth: '',
+    wage: '',
+    email: ''
+  }
   today = new Date(Date.now());
 
   public checkAllFields() {
-    const fields:string[] = [this.name, this.cpf, this.birth, this.wage, this.email]
+    const fields:string[] = [this.user.name, this.user.cpf, this.user.birth, this.user.wage, this.user.email]
     let isFormComplete:boolean = true;
     
     fields.map(field => {
@@ -38,17 +40,17 @@ export class SignUpComponent implements OnInit {
       }
     })
     
-    if (!this.checkSurname(this.name)) return
-    if (!this.checkCPF(this.cpf)) return
-    if (!this.isEighteen(this.birth)) return
+    if (!this.checkSurname(this.user.name)) return
+    if (!this.checkCPF(this.user.cpf)) return
+    if (!this.isEighteen(this.user.birth)) return
 
     if (isFormComplete) {
       axios.post(this.BASE_URL + 'users', {
-        name: this.name,
-        cpf: this.cpf,
-        birth: this.birth,
-        wage: this.wage,
-        email: this.email,
+        name: this.user.name,
+        cpf: this.user.cpf,
+        birth: this.user.birth,
+        wage: this.user.wage,
+        email: this.user.email,
         signUpDate: this.today.toLocaleString().split(' ')[0] 
       }).then(() => {
         this.router.navigateByUrl('/clients');
@@ -96,19 +98,19 @@ export class SignUpComponent implements OnInit {
   public updateModel($event:any, id:string) {
     switch (id) {
       case 'name':
-        this.name = $event.target.value;
+        this.user.name = $event.target.value;
         break;
       case 'cpf':
-        this.cpf = $event.target.value;
+        this.user.cpf = $event.target.value;
         break;
       case 'birth':
-        this.birth = $event.target.value;
+        this.user.birth = $event.target.value;
         break;
       case 'wage':
-        this.wage = $event.target.value;
+        this.user.wage = $event.target.value;
         break;
       case 'email':
-        this.email = $event.target.value;
+        this.user.email = $event.target.value;
     }
   }
 
@@ -118,7 +120,7 @@ export class SignUpComponent implements OnInit {
       placeholder: 'Informe o Nome',
       id: 'name',
       customClass: 'sign-up__input--name',
-      model: this.name
+      model: this.user.name
     },
     {
       label: 'CPF*:',
@@ -126,7 +128,7 @@ export class SignUpComponent implements OnInit {
       id: 'cpf',
       customClass: 'sign-up__input--cpf',
       mask: '000.000.000-00',
-      model: this.cpf
+      model: this.user.cpf
     },
     {
       label: 'Data de nascimento*:',
@@ -136,7 +138,7 @@ export class SignUpComponent implements OnInit {
       icon: '/assets/calendar.png',
       type: 'date',
       mask: '00/00/0000',
-      model: this.birth
+      model: this.user.birth
     },
     {
       label: 'Renda Mensal*:',
@@ -144,14 +146,14 @@ export class SignUpComponent implements OnInit {
       id: 'wage',
       customClass: 'sign-up__input--wage',
       mask: '00.000',
-      model: this.wage
+      model: this.user.wage
     },
     {
       label: 'E-mail*:',
       placeholder: 'Informe o e-mail',
       id: 'email',
       customClass: 'sign-up__input--email',
-      model: this.email
+      model: this.user.email
     },
   ]
 }
